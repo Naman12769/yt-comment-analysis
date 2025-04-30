@@ -1,0 +1,4 @@
+[core]
+    remote = yt-comment-analysis
+['remote "yt-comment-analysis"']
+    url = C:\Users\hi\AppData\Local\Temp\yt
