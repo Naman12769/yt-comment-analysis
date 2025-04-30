@@ -1,6 +1,7 @@
 # app.py
 
 import matplotlib
+import mlflow.sklearn
 matplotlib.use('Agg')  # Use non-interactive backend before importing pyplot
 import dagshub
 from flask import Flask, request, jsonify, send_file
@@ -57,7 +58,8 @@ def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
     dagshub.init(repo_owner='Naman12769', repo_name='yt-comment-analysis', mlflow=True)  # Replace with your MLflow tracking URI
     client = MlflowClient()
     model_uri = f"models:/{model_name}/{model_version}"
-    model = mlflow.pyfunc.load_model(model_uri)
+    model=mlflow.sklearn.load_model(model_uri)
+    # model = mlflow.pyfunc.load_model(model_uri)
     vectorizer = joblib.load(vectorizer_path)  # Load the vectorizer
     return model, vectorizer
 
