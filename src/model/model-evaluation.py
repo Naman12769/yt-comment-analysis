@@ -131,7 +131,7 @@ def save_model_info(run_id: str, model_path: str, file_path: str) -> None:
 def main():
     mlflow.set_tracking_uri("https://dagshub.com/Naman12769/yt-comment-analysis.mlflow")
     
-    dagshub.init(repo_owner='Naman12769',      repo_name='yt-comment-analysis', mlflow=True)
+    dagshub.init(repo_owner='Naman12769',      repo_name='yt-comment-analysis', mlflow=True,token=os.getenv("DAGSHUB_TOKEN"))
 
     mlflow.set_experiment('dvc-pipeline-runs')
     

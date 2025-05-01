@@ -13,6 +13,7 @@ import mlflow
 import numpy as np
 import joblib
 import re
+import os
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -55,7 +56,7 @@ def preprocess_comment(comment):
 def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
     # Set MLflow tracking URI to your server
     mlflow.set_tracking_uri("https://dagshub.com/Naman12769/yt-comment-analysis.mlflow")
-    dagshub.init(repo_owner='Naman12769', repo_name='yt-comment-analysis', mlflow=True)  # Replace with your MLflow tracking URI
+    dagshub.init(repo_owner='Naman12769', repo_name='yt-comment-analysis', mlflow=True,token=os.getenv("DAGSHUB_TOKEN"))  # Replace with your MLflow tracking URI
     client = MlflowClient()
     model_uri = f"models:/{model_name}/{model_version}"
     model=mlflow.sklearn.load_model(model_uri)
